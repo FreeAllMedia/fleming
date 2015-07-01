@@ -1,6 +1,6 @@
 {
   "name": "fleming",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An ES6 DateTime component.",
   "main": "index.js",
   "scripts": {
@@ -11,10 +11,26 @@
     "url": "https://github.com/FreeAllMedia/fleming.git"
   },
   "keywords": [
-    "fleming"
+    "fleming",
+    "date",
+    "datetime",
+    "time"
   ],
   "author": "Free All Media, LLC",
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "nicosommi",
+      "email": "nicosommi@gmail.com"
+    },
+    {
+      "name": "dcrockwell",
+      "email": "dcautomates@gmail.com"
+    },
+    {
+      "name": "paulgoggin",
+      "email": "pgoggin@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/FreeAllMedia/fleming/issues"

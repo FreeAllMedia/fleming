@@ -52,6 +52,38 @@ describe("DateTime()", function () {
 			});
 		});
 
+		describe(".compare(dateTime)", function () {
+			var dateTimeTomorrow = undefined;
+
+			beforeEach(function () {
+				dateTimeTomorrow = new _libFlemingJs2["default"](tomorrow);
+			});
+
+			it("should return a negative number if the target is ahead", function () {
+				dt.compare(dateTimeTomorrow).should.be.lessThan(0);
+			});
+
+			it("should return a positive number if the target is earlier", function () {
+				dateTimeTomorrow.compare(dt).should.be.greaterThan(0);
+			});
+		});
+
+		describe(".isAhead(dateTime)", function () {
+			var dateTimeTomorrow = undefined;
+
+			beforeEach(function () {
+				dateTimeTomorrow = new _libFlemingJs2["default"](tomorrow);
+			});
+
+			it("should return false if the target is ahead", function () {
+				dt.isAhead(dateTimeTomorrow).should.be["false"];
+			});
+
+			it("should return true if it is ahead", function () {
+				dateTimeTomorrow.isAhead(dt).should.be["true"];
+			});
+		});
+
 		describe(".toDate()", function () {
 			it("should get the js datetime object", function () {
 				dt = new _libFlemingJs2["default"](today);

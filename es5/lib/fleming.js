@@ -12,15 +12,23 @@ var moment = require("moment");
 
 var DateTime = (function () {
 	function DateTime() {
+		var _this = this;
+
 		var initialDate = arguments[0] === undefined ? new Date() : arguments[0];
 
 		_classCallCheck(this, DateTime);
 
 		Object.defineProperties(this, {
-			"mDateTime": {
+			"_mDateTime": {
 				enumerable: false,
 				writable: true,
 				value: moment(initialDate)
+			},
+			"mDateTime": {
+				enumerable: true,
+				get: function get() {
+					return _this._mDateTime;
+				}
 			}
 		});
 	}
@@ -28,14 +36,25 @@ var DateTime = (function () {
 	_createClass(DateTime, [{
 		key: "toDate",
 		value: function toDate() {
-			return this.mDateTime.toDate();
+			return this._mDateTime.toDate();
 		}
 	}, {
 		key: "add",
 		value: function add() {
 			var _mDateTime;
 
-			(_mDateTime = this.mDateTime).add.apply(_mDateTime, arguments);
+			(_mDateTime = this._mDateTime).add.apply(_mDateTime, arguments);
+		}
+	}, {
+		key: "compare",
+		value: function compare(target) {
+			//compare this date time with another one
+			return this._mDateTime.diff(target.mDateTime);
+		}
+	}, {
+		key: "isAhead",
+		value: function isAhead(target) {
+			return this.compare(target) >= 0;
 		}
 	}]);
 
