@@ -43,6 +43,38 @@ describe("DateTime()", () => {
 			});
 		});
 
+		describe(".compare(dateTime)", () => {
+			let dateTimeTomorrow;
+
+			beforeEach(() => {
+				dateTimeTomorrow = new DateTime(tomorrow);
+			});
+
+			it("should return a negative number if the target is ahead", () => {
+				dt.compare(dateTimeTomorrow).should.be.lessThan(0);
+			});
+
+			it("should return a positive number if the target is earlier", () => {
+				dateTimeTomorrow.compare(dt).should.be.greaterThan(0);
+			});
+		});
+
+		describe(".isAhead(dateTime)", () => {
+			let dateTimeTomorrow;
+
+			beforeEach(() => {
+				dateTimeTomorrow = new DateTime(tomorrow);
+			});
+
+			it("should return false if the target is ahead", () => {
+				dt.isAhead(dateTimeTomorrow).should.be.false;
+			});
+
+			it("should return true if it is ahead", () => {
+				dateTimeTomorrow.isAhead(dt).should.be.true;
+			});
+		});
+
 		describe(".toDate()", () => {
 			it("should get the js datetime object", () => {
 				dt = new DateTime(today);
