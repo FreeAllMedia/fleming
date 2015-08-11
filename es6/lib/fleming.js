@@ -1,33 +1,31 @@
-let moment = require("moment");
+import moment from "moment";
+import privateData from "incognito";
 
 export default class DateTime {
 	constructor(initialDate = new Date()) {
+		const _ = privateData(this);
+		_._mDateTime = moment(initialDate);
 		Object.defineProperties(this, {
-			"_mDateTime": {
-				enumerable: false,
-				writable: true,
-				value: moment(initialDate)
-			},
 			"mDateTime": {
 				enumerable: true,
 				get: () => {
-					return this._mDateTime;
+					return _._mDateTime;
 				}
 			}
 		});
 	}
 
 	toDate() {
-		return this._mDateTime.toDate();
+		return privateData(this)._mDateTime.toDate();
 	}
 
 	add(...args) {
-		this._mDateTime.add(...args);
+		privateData(this)._mDateTime.add(...args);
 	}
 
 	compare(target) {
 		//compare this date time with another one
-		return this._mDateTime.diff(target.mDateTime);
+		return privateData(this)._mDateTime.diff(target.mDateTime);
 	}
 
 	isAhead(target) {
