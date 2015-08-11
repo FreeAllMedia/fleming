@@ -37,6 +37,7 @@
   },
   "homepage": "https://github.com/FreeAllMedia/fleming",
   "dependencies": {
+    "incognito": "^0.1.2",
     "moment": "^2.10.3"
   },
   "devDependencies": {
